@@ -190,31 +190,6 @@ void test_is_one_of()
 template <typename...>
 using void_t = void;
 
-// Reference
-// https://stackoverflow.com/questions/44845945/why-void-t-doesnt-work-in-sfinae-but-enable-if-does
-
-//namespace pre17 {
-//    template <typename...>
-//    struct voider { using type = void; };
-//    template <typename... T>
-//    using void_t = typename voider<T...>::type;
-//}
-//
-//namespace test_helper {
-//    template <typename T>
-//    struct choose : bool_constant<is_same_v<void, pre17::void_t<typename T::X>>> {};
-//    template <typename T>
-//    struct choose : bool_constant<is_same_v<void, pre17::void_t<typename T::Y>>> {};
-//}
-
-void test_void_t()
-{
-    struct One { using X = int; };
-    struct Two { using Y = int; };
-
-    //static_assert(test_helper::choose<One>::value);
-}
-
 // declval
 template <typename T>
 T&& declval();
